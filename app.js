@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 
 // Charge Route
 app.post('/charge', (req, res) => {
-  const amount = 2500;
+  const amount = 999;
 
   stripe.customers.create({
     email: req.body.stripeEmail,
@@ -35,7 +35,7 @@ app.post('/charge', (req, res) => {
   })
   .then(customer => stripe.charges.create({
     amount,
-    description: 'Web Development Ebook',
+    description: 'Ableton Production Bundle Pack',
     currency: 'gbp',
     customer: customer.id
   }))
