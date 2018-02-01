@@ -1,7 +1,11 @@
 body {
-  background: #000;
+  background: url('../img/background.jpeg');
+  background-size: 100vw 100vh;
   font-weight: 300;
   color: #fff;
+}
+h1, h2, h3 {
+  font-weight: 300;
 }
 nav {
   border-bottom: solid 2px #fff;
