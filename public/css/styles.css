@@ -1,18 +1,21 @@
 body {
   background: url('../img/background.jpeg');
   background-size: 100vw 100vh;
+  font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   color: #fff;
 }
 h1, h2, h3 {
   font-weight: 300;
+  letter-spacing: 1px;
 }
 nav {
   border-bottom: solid 2px #fff;
 }
 
 .landing-container {
-  padding-top: 20px;
+  margin: 0;
+  padding: 0;
 }
 .landing-container img {
   border: solid 5px #333;
@@ -21,4 +24,21 @@ nav {
 
 iframe {
   margin-top: 20px;
+}
+
+button.btn {
+  color: #333;
+  font-weight: 300;
+}
+
+.container::after {
+  content: "";
+  background: #000;
+  opacity: 0.25;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
 }
