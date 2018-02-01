@@ -1,6 +1,10 @@
 body {
-  background: #fff;
+  background: #000;
   font-weight: 300;
+  color: #fff;
+}
+nav {
+  border-bottom: solid 2px #fff;
 }
 
 .landing-container {
@@ -9,4 +13,8 @@ body {
 .landing-container img {
   border: solid 5px #333;
   border-radius: 10px;
+}
+
+iframe {
+  margin-top: 20px;
 }
