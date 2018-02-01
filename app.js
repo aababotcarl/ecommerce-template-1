@@ -13,7 +13,7 @@ app.set('view engine', 'handlebars');
 
 // bodyparser middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({extended: false}));
 
 //  Set static folder
 app.use(express.static(`${__dirname}/public`));
@@ -22,6 +22,12 @@ app.use(express.static(`${__dirname}/public`));
 // index route
 app.get('/', (req, res)=>{
   res.render('index');
+});
+
+app.post('/charge', (req,res) => {
+  const amount = 999;
+  console.log(req.body);
+  res.send('TEST');
 });
 
 const port = process.env.PORT || 5000;
