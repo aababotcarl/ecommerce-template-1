@@ -26,8 +26,18 @@ app.get('/', (req, res)=>{
 
 app.post('/charge', (req,res) => {
   const amount = 999;
-  console.log(req.body);
-  res.send('TEST');
+
+  stripe.customers.create({
+    email: req.body.stripeEmail,
+    source: req.body.stripeToken
+  })
+  .then(customer => stripe.charges.create({
+    amount,
+    description: 'Web Development EBook',
+    currency: 'gbp',
+    customer: customer.id
+  }))
+  .then(charge => res.render('success'));
 });
 
 const port = process.env.PORT || 5000;
