@@ -27,8 +27,16 @@ iframe {
 }
 
 button.btn {
-  color: #333;
+  color: #fff;
   font-weight: 300;
+  background: rgba(255, 255, 255, 0.2);
+  border: solid 2px #fff;
+}
+button.btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+button.btn:focus {
+  outline: none;
 }
 
 .container::after {
