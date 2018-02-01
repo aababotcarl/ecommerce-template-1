@@ -1,5 +1,7 @@
 # NodeJS Application with Stripe Payments
-The aim of this project was to practice implementing Stripe API was well as practice NodeJS
+The aim of this project was to practice implementing Stripe API was well as practice NodeJS.
+
+The application successfully accepts payment using a test stripe key and saves the customers email with can then be downloaded in a .csv file from the Stripe dashboard.
 
 ### Process
 This application was created following a basic tutorial on implementing the Stripe API and accepting Stripe Tokens and test payments.
