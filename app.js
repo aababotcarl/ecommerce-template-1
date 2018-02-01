@@ -1,6 +1,3 @@
-// secret: pk_test_CGQfgCOAuB880dmwwD4LWaiS
-// publishable:
-
 const express = require('express');
 const keys = require('./config/keys');
 const stripe = require('stripe')(keys.stripeSecretKey);
@@ -8,27 +5,28 @@ const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 
 const app = express();
-//  handlebars middleware
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+
+// Handlebars Middleware
+app.engine('handlebars',exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-// bodyparser middleware
+// Body Parser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-//  Set static folder
+// Set Static Folder
 app.use(express.static(`${__dirname}/public`));
 
-
-// index route
-app.get('/', (req, res)=>{
+// Index Route
+app.get('/', (req, res) => {
   res.render('index', {
     stripePublishableKey: keys.stripePublishableKey
   });
 });
 
-app.post('/charge', (req,res) => {
-  const amount = 999;
+// Charge Route
+app.post('/charge', (req, res) => {
+  const amount = 2500;
 
   stripe.customers.create({
     email: req.body.stripeEmail,
@@ -36,13 +34,12 @@ app.post('/charge', (req,res) => {
   })
   .then(customer => stripe.charges.create({
     amount,
-    description: 'Web Development EBook',
-    currency: 'gbp',
+    description: 'Web Development Ebook',
+    currency: 'usd',
     customer: customer.id
   }))
   .then(charge => res.render('success'));
 });
-
 
 const port = process.env.PORT || 5000;
 
