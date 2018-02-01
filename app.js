@@ -1,6 +1,7 @@
+// stripePublishableKey: 'pk_test_CGQfgCOAuB880dmwwD4LWaiS',
+// stripeSecretKey: 'sk_test_gsF7ubnlEZsQvxDjBiYPv8xy'
 const express = require('express');
-const keys = require('./config/keys');
-const stripe = require('stripe')(keys.stripeSecretKey);
+const stripe = require('stripe')('sk_test_gsF7ubnlEZsQvxDjBiYPv8xy');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 
@@ -20,7 +21,7 @@ app.use(express.static(`${__dirname}/public`));
 // Index Route
 app.get('/', (req, res) => {
   res.render('index', {
-    stripePublishableKey: keys.stripePublishableKey
+    stripePublishableKey: 'pk_test_CGQfgCOAuB880dmwwD4LWaiS'
   });
 });
 
@@ -35,7 +36,7 @@ app.post('/charge', (req, res) => {
   .then(customer => stripe.charges.create({
     amount,
     description: 'Web Development Ebook',
-    currency: 'usd',
+    currency: 'gbp',
     customer: customer.id
   }))
   .then(charge => res.render('success'));
