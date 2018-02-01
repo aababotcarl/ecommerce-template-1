@@ -12,7 +12,7 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 // bodyparser middleware
-app.use(boderParser.json());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
 //  Set static folder
