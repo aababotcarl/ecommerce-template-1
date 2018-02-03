@@ -37,6 +37,8 @@ app.post('/charge', (req, res) => {
     amount: 999
   });
 
+
+
   stripe.customers.create({
     email: req.body.stripeEmail,
     source: req.body.stripeToken
@@ -46,7 +48,8 @@ app.post('/charge', (req, res) => {
     description: 'Ableton Production Bundle Pack',
     currency: 'gbp',
     customer: customer.id
-  }))
+
+  }, console.log(customer)))
   .then(customer => stripe.subscriptions.create({
     customer: customer.id,
     items: [{plan: 'plan_CFuIWorNzzfuNb'}]
