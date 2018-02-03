@@ -49,7 +49,7 @@ app.post('/charge', (req, res) => {
   }))
   .then(customer => stripe.subscriptions.create({
     customer: customer.id,
-    items: [{plan: 'plan_CBXbz9i7AIOTzr'}]
+    items: [{plan: 'plan_CFuIWorNzzfuNb'}]
   }))
   .then(charge => res.render('success'));
 });
