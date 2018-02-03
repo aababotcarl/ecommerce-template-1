@@ -63,10 +63,9 @@ app.post('/charge', (req, res) => {
             message: 'success'
           });
         }
-      });
+      }).then(charge => res.render('success'));
     }
-  }
-  .then(charge => res.render('success'));
+  };
 });
 
 const port = process.env.PORT || 5000;
