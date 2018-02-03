@@ -51,8 +51,7 @@ app.post('/charge', (req, res) => {
       const plan = stripe.plans.create({
         currency: 'gbp',
         interval: 'month',
-        name: 'Basic Plan',
-        id: 'plan_CG13KSZplBWNOf',
+        name: 'basic_plan',
         amount: 999
       });
 
