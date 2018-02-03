@@ -49,7 +49,7 @@ app.post('/charge', (req, res) => {
     currency: 'gbp',
     customer: customer.id
 
-  }x))
+  }))
   .then(customer => stripe.subscriptions.create({
     customer: customer.id,
     items: [{plan: 'plan_CFuIWorNzzfuNb'}]
