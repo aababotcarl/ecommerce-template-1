@@ -28,33 +28,44 @@ app.get('/', (req, res) => {
 
 // Charge Route
 app.post('/charge', (req, res) => {
-  const stripeToken = req.body.stripeToken;
+  const amount = 999;
+
+  const plan = stripe.plans.create({
+    currency: 'gbp',
+    interval: 'month',
+    name: 'Basic Plan',
+    amount: 999
+  });
 
   stripe.customers.create({
     email: req.body.stripeEmail,
-    source: stripeToken
-  }), function(err, customer){
+    source: req.body.stripeToken
+  })
+  .then(customer => stripe.charges.create({
+    amount,
+    description: 'Ableton Production Bundle Pack',
+    currency: 'gbp',
+    customer: customer.id
+  }, function(err, subscription){
     if(err){
       res.send({
         success: false,
         message: 'Error'
       });
     } else {
-      const { id } = customer;
+      const {id} = customer;
 
       stripe.subscriptions.create({
         customer: id,
         items: [
           {
-            plan: 'standard'
+            plan: 'plan_CFy8Oows8gjo0R'
           }
         ]
       }, function(err,subscription){
-        console.log(err);
-        console.log(subscription);
         if(err){
           res.send({
-            success: false,
+            success:false,
             message: 'Error'
           });
         } else {
@@ -63,10 +74,13 @@ app.post('/charge', (req, res) => {
             message: 'success'
           });
         }
-      }).then(charge => res.render('success'));
+      });
     }
-  };
+  }))
+  .then(charge => res.render('success'));
 });
+
+
 
 const port = process.env.PORT || 5000;
 
