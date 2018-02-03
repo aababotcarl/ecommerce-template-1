@@ -28,19 +28,12 @@ app.get('/', (req, res) => {
 
 // Charge Route
 app.post('/charge', (req, res) => {
-  const amount = 999;
   const stripeToken = req.body.stripeToken;
 
   stripe.customers.create({
     email: req.body.stripeEmail,
-    source: req.body.stripeToken
-  })
-  .then(customer => stripe.charges.create({
-    amount,
-    description: 'Ableton Production Bundle Pack',
-    currency: 'gbp',
-    customer: customer.id
-  }, function(err, customer){
+    source: stripeToken
+  }), function(err, customer){
     if(err){
       res.send({
         success: false,
@@ -72,7 +65,7 @@ app.post('/charge', (req, res) => {
         }
       });
     }
-  }))
+  }
   .then(charge => res.render('success'));
 });
 
