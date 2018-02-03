@@ -30,6 +30,13 @@ app.get('/', (req, res) => {
 app.post('/charge', (req, res) => {
   const amount = 999;
 
+  const plan = stripe.plans.create({
+    currency: 'gbp',
+    interval: 'month',
+    name: 'Basic Plan',
+    amount: 999
+  });
+
   stripe.customers.create({
     email: req.body.stripeEmail,
     source: req.body.stripeToken
@@ -39,6 +46,10 @@ app.post('/charge', (req, res) => {
     description: 'Ableton Production Bundle Pack',
     currency: 'gbp',
     customer: customer.id
+  }))
+  .then(customer => stripe.subscriptions.create({
+    customer: customer.id,
+    items: [{plan: 'plan_CBXbz9i7AIOTzr'}]
   }))
   .then(charge => res.render('success'));
 });
