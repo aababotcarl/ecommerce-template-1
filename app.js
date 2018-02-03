@@ -51,7 +51,7 @@ app.post('/charge', (req, res) => {
   }))
   .then(charge => res.render('success'));
 
-  stripe.subscriptions.create({
+  stripe.subscriptions.create(customer = () => {
     customer: customer.id,
     plan: 'plan_CFy8Oows8gjo0R'
   });
