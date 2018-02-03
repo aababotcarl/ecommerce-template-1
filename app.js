@@ -1,7 +1,8 @@
 // stripePublishableKey: 'pk_test_CGQfgCOAuB880dmwwD4LWaiS',
 // stripeSecretKey: 'sk_test_gsF7ubnlEZsQvxDjBiYPv8xy'
 const express = require('express');
-const stripe = require('stripe')('sk_test_gsF7ubnlEZsQvxDjBiYPv8xy');
+const { stripeSecretKey, stripePublishableKey } = require('./config/environment');
+const stripe = require('stripe')(stripeSecretKey);
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 
@@ -21,7 +22,7 @@ app.use(express.static(`${__dirname}/public`));
 // Index Route
 app.get('/', (req, res) => {
   res.render('index', {
-    stripePublishableKey: 'pk_test_CGQfgCOAuB880dmwwD4LWaiS'
+    stripePublishableKey: stripePublishableKey
   });
 });
 
