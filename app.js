@@ -37,8 +37,6 @@ app.post('/charge', (req, res) => {
     amount: 999
   });
 
-
-
   stripe.customers.create({
     email: req.body.stripeEmail,
     source: req.body.stripeToken
@@ -48,13 +46,40 @@ app.post('/charge', (req, res) => {
     description: 'Ableton Production Bundle Pack',
     currency: 'gbp',
     customer: customer.id
+  }, function(err, subscription){
+    if(err){
+      res.send({
+        success: false,
+        message: 'Error'
+      });
+    } else {
+      const {id} = customer;
+
+      stripe.subscriptions.create({
+        customer: id,
+        items: [
+          {
+            plan: 'plan_CFy8Oows8gjo0R'
+          }
+        ]
+      }, function(err,subscription){
+        console.log(err);
+        console.log(subscription);
+        if(err){
+          res.send({
+            success:false,
+            message: 'Error'
+          });
+        } else {
+          res.send({
+            success: true,
+            message: 'Success'
+          });
+        }
+      });
+    }
   }))
   .then(charge => res.render('success'));
-
-  stripe.subscriptions.create(customer = () => {
-    customer: customer.id,
-    plan: 'plan_CFy8Oows8gjo0R'
-  });
 });
 
 
