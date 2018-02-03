@@ -37,8 +37,6 @@ app.post('/charge', (req, res) => {
     amount: 999
   });
 
-
-
   stripe.customers.create({
     email: req.body.stripeEmail,
     source: req.body.stripeToken
@@ -49,12 +47,14 @@ app.post('/charge', (req, res) => {
     currency: 'gbp',
     customer: customer.id
   }))
-  .then(customer => stripe.subscriptions.create({
+  .then(customer =>   stripe.subscriptions.create({
     customer: customer.id,
-    items: [{plan: 'plan_CFuIWorNzzfuNb'}]
+    plan: 'plan_CFy8Oows8gjo0R'
   }))
   .then(charge => res.render('success'));
 });
+
+
 
 const port = process.env.PORT || 5000;
 
