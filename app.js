@@ -40,8 +40,6 @@ app.post('/charge', (req, res) => {
     currency: 'gbp',
     customer: customer.id
   }, function(err, customer){
-    console.log(err);
-    console.log(customer);
     if(err){
       res.send({
         success: false,
@@ -49,12 +47,19 @@ app.post('/charge', (req, res) => {
       });
     } else {
       const {id} = customer;
+      
+      const plan = stripe.plans.create({
+        currency: 'gbp',
+        interval: 'month',
+        name: 'Basic Plan',
+        amount: 0
+      });
 
       stripe.subscriptions.create({
         customer: id,
         items: [
           {
-            plan: 'basic_plan'
+            plan: plan
           }
         ]
       }, function(err,subscription){
