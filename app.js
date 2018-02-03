@@ -48,7 +48,6 @@ app.post('/charge', (req, res) => {
     description: 'Ableton Production Bundle Pack',
     currency: 'gbp',
     customer: customer.id
-
   }))
   .then(customer => stripe.subscriptions.create({
     customer: customer.id,
