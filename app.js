@@ -29,6 +29,7 @@ app.get('/', (req, res) => {
 // Charge Route
 app.post('/charge', (req, res) => {
   const amount = 999;
+  const stripeToken = req.body.stripeToken;
 
   stripe.customers.create({
     email: req.body.stripeEmail,
@@ -46,20 +47,13 @@ app.post('/charge', (req, res) => {
         message: 'Error'
       });
     } else {
-      const {id} = customer;
-
-      const plan = stripe.plans.create({
-        currency: 'gbp',
-        interval: 'month',
-        name: 'basic_plan',
-        amount: 999
-      });
+      const { id } = customer;
 
       stripe.subscriptions.create({
         customer: id,
         items: [
           {
-            plan: plan
+            plan: 'standard'
           }
         ]
       }, function(err,subscription){
@@ -73,7 +67,7 @@ app.post('/charge', (req, res) => {
         } else {
           res.send({
             success: true,
-            message: 'Success'
+            message: 'success'
           });
         }
       });
