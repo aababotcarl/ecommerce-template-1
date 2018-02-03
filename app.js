@@ -59,7 +59,7 @@ app.post('/charge', (req, res) => {
         customer: id,
         items: [
           {
-            plan: 'plan_CFy8Oows8gjo0R'
+            plan: 'standard'
           }
         ]
       }, function(err,subscription){
