@@ -47,7 +47,6 @@ app.post('/charge', (req, res) => {
     currency: 'gbp',
     customer: customer.id
   }, function(err, subscription){
-    console.log(subscription);
     if(err){
       res.send({
         success: false,
