@@ -47,12 +47,13 @@ app.post('/charge', (req, res) => {
       });
     } else {
       const {id} = customer;
-      
+
       const plan = stripe.plans.create({
         currency: 'gbp',
         interval: 'month',
         name: 'Basic Plan',
-        amount: 0
+        id: 'plan_CG13KSZplBWNOf',
+        amount: 999
       });
 
       stripe.subscriptions.create({
