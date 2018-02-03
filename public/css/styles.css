@@ -45,7 +45,9 @@ button.btn {
   color: #fff;
   font-weight: 300;
   background: rgba(255, 255, 255, 0.2);
-  border: solid 2px #fff;
+  border: solid 2px none;
+  border-radius: 0;
+  padding: 10px 25px;
 }
 button.btn:hover {
   background: rgba(255, 255, 255, 0.4);
