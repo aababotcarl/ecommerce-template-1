@@ -46,7 +46,9 @@ app.post('/charge', (req, res) => {
     description: 'Ableton Production Bundle Pack',
     currency: 'gbp',
     customer: customer.id
-  }, function(err, subscription){
+  }, function(err, customer){
+    console.log(err);
+    console.log(customer);
     if(err){
       res.send({
         success: false,
@@ -67,7 +69,7 @@ app.post('/charge', (req, res) => {
         console.log(subscription);
         if(err){
           res.send({
-            success:false,
+            success: false,
             message: 'Error'
           });
         } else {
@@ -81,8 +83,6 @@ app.post('/charge', (req, res) => {
   }))
   .then(charge => res.render('success'));
 });
-
-
 
 const port = process.env.PORT || 5000;
 
