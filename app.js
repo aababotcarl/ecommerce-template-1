@@ -36,23 +36,35 @@ app.post('/charge', (req, res) => {
     name: 'Basic Plan',
     amount: 999
   });
+
   stripe.customers.create({
     email: req.body.stripeEmail,
     source: req.body.stripeToken
   })
-  .then(customer => {
-    if (customer){
-      return stripe.charges.create({
-        amount,
-        description: 'Example Bundle Pack',
-        currency: 'gbp',
-        customer: customer.id
+  .then(customer => stripe.charges.create({
+    amount,
+    description: 'Example Bundle Pack',
+    currency: 'gbp',
+    customer: customer.id
+  }, function(err, subscription){
+    if(err){
+      return res.send({
+        success: false,
+        message: 'Error'
+      });
+    } else {
+      const {id} = customer;
+      stripe.subscriptions.create({
+        customer: id,
+        items: [
+          {
+            plan: 'standard'
+          }
+        ]
       });
     }
-  })
-  .then(charge => {
-    return res.render('success');
-  });
+  }))
+  .then(charge => res.render('success'));
 });
 
 const port = process.env.PORT || 5000;
