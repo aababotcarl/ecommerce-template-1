@@ -46,35 +46,6 @@ app.post('/charge', (req, res) => {
     description: 'Example Bundle Pack',
     currency: 'gbp',
     customer: customer.id
-  }, function(err, subscription){
-    if(err){
-      return res.send({
-        success: false,
-        message: 'Error'
-      });
-    } else {
-      const {id} = customer;
-      stripe.subscriptions.create({
-        customer: id,
-        items: [
-          {
-            plan: 'standard'
-          }
-        ]
-      }, function(err,subscription){
-        if(err){
-          return res.send({
-            success: false,
-            message: 'Error'
-          });
-        } else {
-          return res.send({
-            success: true,
-            message: 'success'
-          });
-        }
-      });
-    }
   }))
   .then(charge => res.render('success'));
 });
