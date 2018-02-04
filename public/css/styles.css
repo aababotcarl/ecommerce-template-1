@@ -12,14 +12,7 @@ h1, h2, h3 {
 h1 {
   letter-spacing: 5px;
 }
-span {
-  width: 80px;
-  height: 3px;
-  background: white;
-  line-height: 9px;
-  display: inline-block;
-  margin: 20px;
-}
+
 nav {
   border-bottom: solid 2px #fff;
   text-align: center;
@@ -41,23 +34,6 @@ iframe {
 .cookiePolicy a{
   display: none;
 }
-
-button.btn {
-  color: #fff;
-  font-weight: 300;
-  background: none;
-  border-top: solid 2px #fff;
-  border-bottom: solid 2px #fff;
-  border-radius: 0;
-  padding: 10px 25px;
-}
-button.btn:hover {
-  background: rgba(255, 255, 255, 0.4);
-}
-button.btn:focus {
-  outline: none;
-}
-
 .container::after {
   content: "";
   background: #000;
