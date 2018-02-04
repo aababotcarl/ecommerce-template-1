@@ -36,33 +36,20 @@ app.post('/charge', (req, res) => {
     name: 'Basic Plan',
     amount: 999
   });
+  const stripeToken = req.body.stripeToken;
+  const email = req.body.stripeEmail;
 
   stripe.customers.create({
-    email: req.body.stripeEmail,
-    source: req.body.stripeToken
+    email: email,
+    source: stripeToken
   })
-  .then(customer => stripe.charges.create({
-    amount,
-    description: 'Example Bundle Pack',
-    currency: 'gbp',
-    customer: customer.id
-  }, function(err, subscription){
-    if(err){
-      return res.send({
-        success: false,
-        message: 'Error'
-      });
-    } else {
-      const {id} = customer;
-      stripe.subscriptions.create({
-        customer: id,
-        items: [
-          {
-            plan: 'standard'
-          }
-        ]
-      });
-    }
+  .then(customer => stripe.subscriptions.create({
+    customer: customer.id,
+    items: [
+      {
+        plan: 'standard'
+      }
+    ]
   }))
   .then(charge => res.render('success'));
 });
