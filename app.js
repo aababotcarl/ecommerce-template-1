@@ -77,9 +77,8 @@ app.post('/charge', (req, res) => {
     }
   }))
   .then(charge => res.render('success'));
+  return;
 });
-
-
 
 const port = process.env.PORT || 5000;
 
