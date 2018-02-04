@@ -50,9 +50,8 @@ app.post('/charge', (req, res) => {
       });
     }
   })
-  .then(charge => res.render('success'))
-  .catch(err => {
-    console.log(err);
+  .then(charge => {
+    return res.render('success');
   });
 });
 
