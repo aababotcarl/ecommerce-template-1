@@ -30,15 +30,16 @@ app.get('/', (req, res) => {
 app.post('/charge', (req, res) => {
   const stripeToken = req.body.stripeToken;
   const email = req.body.stripeEmail;
+  const receipt_email = req.body.stripeEmail;
 
 
   stripe.customers.create({
     email: email,
+    receipt_email: receipt_email,
     source: stripeToken
   })
   .then(customer => stripe.subscriptions.create({
     customer: customer.id,
-    receipt_email: customer.email,
     items: [
       {
         plan: 'standard'
