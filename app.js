@@ -55,7 +55,6 @@ app.post('/charge', (req, res) => {
       });
     } else {
       const {id} = customer;
-      console.log(customer);
       stripe.subscriptions.create({
         customer: id,
         items: [
@@ -66,7 +65,7 @@ app.post('/charge', (req, res) => {
       }, function(err,subscription){
         if(err){
           res.send({
-            success:false,
+            success: false,
             message: 'Error'
           });
         } else {
