@@ -52,6 +52,7 @@ app.post('/charge', (req, res) => {
         success: false,
         message: 'Error'
       });
+      return;
     } else {
       const {id} = customer;
       stripe.subscriptions.create({
@@ -72,8 +73,8 @@ app.post('/charge', (req, res) => {
             success: true,
             message: 'success'
           });
+          return;
         }
-        return;
       });
     }
   }))
