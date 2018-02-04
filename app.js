@@ -28,13 +28,6 @@ app.get('/', (req, res) => {
 
 // Charge Route
 app.post('/charge', (req, res) => {
-  const amount = 999;
-  const plan = stripe.plans.create({
-    currency: 'gbp',
-    interval: 'month',
-    name: 'Basic Plan',
-    amount: 999
-  });
   const stripeToken = req.body.stripeToken;
   const email = req.body.stripeEmail;
 
