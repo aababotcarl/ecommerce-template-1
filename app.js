@@ -48,7 +48,7 @@ app.post('/charge', (req, res) => {
     customer: customer.id
   }, function(err, subscription){
     if(err){
-      res.send({
+      return res.send({
         success: false,
         message: 'Error'
       });
@@ -63,12 +63,12 @@ app.post('/charge', (req, res) => {
         ]
       }, function(err,subscription){
         if(err){
-          res.send({
+          return res.send({
             success: false,
             message: 'Error'
           });
         } else {
-          res.send({
+          return res.send({
             success: true,
             message: 'success'
           });
