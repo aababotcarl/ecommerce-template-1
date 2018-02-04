@@ -39,7 +39,7 @@ app.post('/charge', (req, res) => {
   })
   .then(customer => stripe.subscriptions.create({
     customer: customer.id,
-    receipt_email: receipt_email,
+    receipt_email: customer.receipt_email,
     items: [
       {
         plan: 'standard'
