@@ -73,6 +73,7 @@ app.post('/charge', (req, res) => {
             message: 'success'
           });
         }
+        return;
       });
     }
   }))
