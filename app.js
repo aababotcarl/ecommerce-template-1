@@ -52,7 +52,6 @@ app.post('/charge', (req, res) => {
         success: false,
         message: 'Error'
       });
-      return;
     } else {
       const {id} = customer;
       stripe.subscriptions.create({
@@ -73,13 +72,11 @@ app.post('/charge', (req, res) => {
             success: true,
             message: 'success'
           });
-          return;
         }
       });
     }
   }))
   .then(charge => res.render('success'));
-  return;
 });
 
 const port = process.env.PORT || 5000;
