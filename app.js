@@ -45,7 +45,8 @@ app.post('/charge', (req, res) => {
     amount,
     description: 'Ableton Production Bundle Pack',
     currency: 'gbp',
-    customer: customer.id
+    customer: customer.id,
+    receipt: customer.email
   }, function(err, subscription){
     if(err){
       res.send({
@@ -54,7 +55,7 @@ app.post('/charge', (req, res) => {
       });
     } else {
       const {id} = customer;
-
+      console.log(customer);
       stripe.subscriptions.create({
         customer: id,
         items: [
