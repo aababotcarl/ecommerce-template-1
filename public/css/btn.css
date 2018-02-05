@@ -8,8 +8,9 @@
   background: none;
   color: #fff;
   font-size: 24px;
-  font-weight: 300;
+  font-weight: 200;
   border-radius: 0;
+  letter-spacing: 1px;
 }
 button:focus,
 button:active {
@@ -19,7 +20,7 @@ button:active {
   content: "";
   position: absolute;
   left: 0;
-  height: 5px;
+  height: 2px;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.4);
 }
@@ -42,7 +43,7 @@ button:active {
   position: absolute;
   top: 0;
   height: 100%;
-  width: 5px;
+  width: 2px;
   background-color: none;
 }
 .btn > *:before {
@@ -56,7 +57,7 @@ button:active {
   position: absolute;
   left: 0;
   z-index: 9;
-  height: 5px;
+  height: 2px;
   width: 100%;
   background-color: #fff;
 }
@@ -84,7 +85,7 @@ button:active {
   top: 0;
   z-index: 9;
   height: 100%;
-  width: 5px;
+  width: 2px;
   background-color: none;
 }
 .btn > * > * > *:before {
