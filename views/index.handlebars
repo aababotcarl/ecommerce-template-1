@@ -1,35 +1,53 @@
 <section class="landing-container">
-  <div class="row">
-    <div class="col-md-6">
-      <h1 class="display-3">
-        Example Download<br />Packs<span></span>
-      </h1>
-        <p>Subscribe to our monthly emails to receive premium, royalty free things straight to your inbox.</p>
-        <form action="/charge" method="POST">
-        <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="{{stripePublishableKey}}"
-          data-amount="999"
-          data-name="Example Checkout"
-          data-description="Example Download Pack"
-          data-locale="auto"
-          data-currency="gbp">
-        </script>
-        <script type="text/javascript">
-        // hide default stripe button
-        document.getElementsByClassName('stripe-button-el')[0].style.display = "none";
-        </script>
-        <button type="submit" name="button" class="btn">
-          <span>
-            <span>
-              <span>Purchase for £9.99</span>
-            </span>
-          </span>
-        </button>
-      </form>
+  <h1 class="wow fadeIn">
+    The Subscription Template
+  </h1>
+    <p class="wow fadeIn">This template uses a working stripe form to accept subscription payments. Simple download the code, search for and replace the Keys, and you're good to go!</p>
+</section>
+
+<section id="form" class="text-center">
+  <form action="/charge" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="{{stripePublishableKey}}"
+    data-amount="999"
+    data-name="Example Checkout"
+    data-description="Example Download Pack"
+    data-locale="auto"
+    data-currency="gbp">
+  </script>
+  <script type="text/javascript">
+  // hide default stripe button
+  document.getElementsByClassName('stripe-button-el')[0].style.display = "none";
+  </script>
+  <div class="btn-container wow fadeIn">
+    <button type="submit" name="button" class="btn">
+      <span>
+          <span>Click here to subscribe!</span>
+      </span>
+    </button>
+  </div>
+</form>
+</section>
+
+<section>
+  <div class="row text-center">
+    <div class="col-sm-4">
+      <h3 class="wow fadeIn" data-wow-delay="0.5s">Hook it up to mail chimp and build a mailing list</h3>
     </div>
-    <div class="col-md-6">
-      <!-- <iframe width="100%" height="500" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/356224944&amp;color=%23a49ca4&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"></iframe> -->
+    <div class="col-sm-4">
+      <h3 class="wow fadeIn" data-wow-delay="1s">Attach digital products to your emails</h3>
+    </div>
+    <div class="col-sm-4">
+      <h3 class="wow fadeIn" data-wow-delay="1.5s">Free up time to focus on your business!</h3>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="row">
+    <div class="col-md-12 text-center wow fadeIn">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     </div>
   </div>
 </section>
